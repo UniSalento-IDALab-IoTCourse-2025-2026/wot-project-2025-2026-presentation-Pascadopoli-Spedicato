@@ -5,6 +5,8 @@ e Daniel Spedicato per il corso Internet of Things 2025/2026 dell'Universita del
 Salento.
 
 La pagina e' statica e non richiede build, dipendenze o variabili d'ambiente.
+Il repository include anche `Presentazione_Progetto_IoT_Pascadopoli_Spedicato.pptx`,
+scaricabile direttamente dalla pagina.
 
 ## Anteprima locale
 

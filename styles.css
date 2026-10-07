@@ -190,6 +190,7 @@ h1 { margin-bottom: 20px; color: var(--teal-900); font-family: "Source Serif 4",
 .closing img { width: 90px; height: 90px; margin-bottom: 20px; object-fit: cover; border-radius: 8px; }
 .closing h2 { max-width: 780px; margin-left: auto; margin-right: auto; }
 .closing > p:not(.eyebrow) { margin-bottom: 28px; color: var(--muted); }
+.closing-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 footer { min-height: 76px; padding: 22px max(24px, calc((100vw - var(--content)) / 2)); display: flex; align-items: center; justify-content: space-between; gap: 24px; color: #8fa1a5; background: var(--teal-900); font-size: 11px; }
 footer a { display: inline-flex; align-items: center; gap: 7px; color: var(--white); text-decoration: none; }
 footer svg { width: 14px; }
