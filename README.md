@@ -29,6 +29,9 @@ push sul branch `main`. La prima volta, nel repository GitHub aprire
 Il sito verra' pubblicato all'indirizzo mostrato dalla sezione Pages e dal job
 `Deploy GitHub Pages` nella scheda Actions.
 
+Il sito sarà disponibile in
+https://unisalento-idalab-iotcourse-2025-2026.github.io/wot-project-2025-2026-presentation-Emilio-Daniel/
+
 ## Repository principale
 
 [wot-project-2025-2026-project-Emilio-Daniel](https://github.com/UniSalento-IDALab-IoTCourse-2025-2026/wot-project-2025-2026-project-Emilio-Daniel)
