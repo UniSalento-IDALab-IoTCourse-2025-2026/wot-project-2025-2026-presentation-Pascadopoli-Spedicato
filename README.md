@@ -18,13 +18,14 @@ La pagina sara' disponibile su `http://localhost:8000`.
 
 ## Pubblicazione GitHub Pages
 
-Nel repository GitHub aprire **Settings > Pages** e scegliere:
+Il workflow `.github/workflows/pages.yml` pubblica automaticamente il sito a ogni
+push sul branch `main`. La prima volta, nel repository GitHub aprire
+**Settings > Pages** e scegliere:
 
-- Source: `Deploy from a branch`
-- Branch: `main`
-- Folder: `/ (root)`
+- Source: `GitHub Actions`
 
-Il sito verra' pubblicato all'indirizzo indicato dalla sezione Pages.
+Il sito verra' pubblicato all'indirizzo mostrato dalla sezione Pages e dal job
+`Deploy GitHub Pages` nella scheda Actions.
 
 ## Repository principale
 
