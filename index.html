@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Triage IoT: sistema distribuito Edge, Cloud e mobile per il monitoraggio domiciliare e il supporto al triage.">
+  <meta name="theme-color" content="#073b3d">
+  <title>Triage IoT | Pascadopoli e Spedicato</title>
+  <link rel="icon" href="assets/app-logo.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Vai al contenuto</a>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="Triage IoT, torna all'inizio">
+      <img src="assets/app-logo.jpg" alt="">
+      <span>Triage IoT</span>
+    </a>
+    <button class="menu-button" type="button" aria-label="Apri menu" aria-expanded="false" data-menu-button>
+      <span class="menu-glyph" aria-hidden="true"></span>
+    </button>
+    <nav class="site-nav" aria-label="Navigazione principale" data-nav>
+      <a href="#progetto">Progetto</a>
+      <a href="#architettura">Architettura</a>
+      <a href="#funzioni">Funzioni</a>
+      <a href="#demo">Demo</a>
+      <a class="nav-cta" href="https://github.com/UniSalento-IDALab-IoTCourse-2025-2026/wot-project-2025-2026-project-Emilio-Daniel" target="_blank" rel="noreferrer">Codice sorgente</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <p class="eyebrow">Internet of Things 2025/2026 · Università del Salento</p>
+        <h1 id="hero-title">Triage IoT</h1>
+        <p class="hero-lead">Monitoraggio domiciliare intelligente, elaborazione Edge e una visione clinica unificata per accompagnare il paziente ogni giorno.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#architettura">Esplora il sistema <i data-lucide="arrow-down" aria-hidden="true"></i></a>
+          <a class="button secondary" href="#demo">Guarda la demo</a>
+        </div>
+        <p class="authors">Emilio Pascadopoli · Daniel Spedicato</p>
+      </div>
+    </section>
+
+    <section class="signal-strip" aria-label="Indicatori principali">
+      <div><strong>4 min</strong><span>per ogni finestra Edge</span></div>
+      <div><strong>MQTT + TLS</strong><span>trasporto affidabile e cifrato</span></div>
+      <div><strong>3 interfacce</strong><span>medico, paziente e caregiver</span></div>
+      <div><strong>Offline-first</strong><span>coda locale e ritentativo</span></div>
+    </section>
+
+    <section class="section intro" id="progetto">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Il progetto</p>
+        <h2>Dai segnali quotidiani a informazioni realmente leggibili</h2>
+      </div>
+      <div class="intro-copy reveal">
+        <p>Triage IoT integra dati fisiologici provenienti da Google Health con la routine domestica stimata tramite beacon BLE. Il Raspberry Pi raccoglie, controlla e aggrega i segnali vicino al paziente, mentre il backend li rende disponibili al medico in tempo reale.</p>
+        <p>Il sistema non sostituisce il giudizio clinico. Organizza il contesto, evidenzia variazioni rispetto alla normalità personale e mantiene separati problemi tecnici e possibili anomalie, così il professionista può concentrarsi su ciò che richiede attenzione.</p>
+      </div>
+      <div class="principles" aria-label="Principi progettuali">
+        <article class="principle reveal">
+          <span>01</span>
+          <h3>Vicino al paziente</h3>
+          <p>L’elaborazione Edge riduce dipendenza dalla rete e mantiene attiva la raccolta anche quando il PC non è raggiungibile.</p>
+        </article>
+        <article class="principle reveal">
+          <span>02</span>
+          <h3>Comprensibile</h3>
+          <p>Grafici, timeline e spiegazioni dell’indice AI trasformano misure eterogenee in una storia temporale consultabile.</p>
+        </article>
+        <article class="principle reveal">
+          <span>03</span>
+          <h3>Orientato alle persone</h3>
+          <p>Medico, paziente e caregiver ricevono viste e azioni diverse, coerenti con il loro ruolo e con i dati autorizzati.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section architecture-band" id="architettura">
+      <div class="section-heading light reveal">
+        <p class="eyebrow">Architettura distribuita</p>
+        <h2>Tre nodi, un unico flusso controllato</h2>
+        <p>Acquisizione, inferenza e presentazione restano componenti indipendenti, collegati da contratti REST, WebSocket e MQTT.</p>
+      </div>
+
+      <div class="architecture" aria-label="Flusso architetturale del sistema">
+        <article class="node node-mobile reveal">
+          <div class="node-icon"><i data-lucide="smartphone" aria-hidden="true"></i></div>
+          <p class="node-kicker">Telefono Android</p>
+          <h3>Companion</h3>
+          <ul>
+            <li>Scansione beacon BLE</li>
+            <li>Task e questionari</li>
+            <li>Notifiche FCM</li>
+          </ul>
+        </article>
+        <div class="connector reveal"><span>HTTP LAN</span><i data-lucide="arrow-right" aria-hidden="true"></i></div>
+        <article class="node node-edge reveal">
+          <div class="node-icon"><i data-lucide="cpu" aria-hidden="true"></i></div>
+          <p class="node-kicker">Raspberry Pi 5</p>
+          <h3>Edge & AI</h3>
+          <ul>
+            <li>Finestre da 4 minuti</li>
+            <li>Controllo qualità</li>
+            <li>Inferenza locale</li>
+          </ul>
+        </article>
+        <div class="connector reveal"><span>MQTT TLS</span><i data-lucide="arrow-right" aria-hidden="true"></i></div>
+        <article class="node node-cloud reveal">
+          <div class="node-icon"><i data-lucide="server" aria-hidden="true"></i></div>
+          <p class="node-kicker">PC locale</p>
+          <h3>Cloud stack</h3>
+          <ul>
+            <li>FastAPI e PostgreSQL</li>
+            <li>Mosquitto e worker</li>
+            <li>Dashboard React</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="protocols reveal">
+        <span><i data-lucide="bluetooth" aria-hidden="true"></i> BLE</span>
+        <span><i data-lucide="radio" aria-hidden="true"></i> MQTT</span>
+        <span><i data-lucide="braces" aria-hidden="true"></i> REST</span>
+        <span><i data-lucide="activity" aria-hidden="true"></i> WebSocket</span>
+        <span><i data-lucide="bell" aria-hidden="true"></i> Firebase</span>
+      </div>
+    </section>
+
+    <section class="section data-story">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Dal dato alla decisione</p>
+        <h2>Una pipeline che rende visibile anche l’incertezza</h2>
+      </div>
+      <ol class="pipeline">
+        <li class="reveal"><span>1</span><div><strong>Acquisizione</strong><p>Pixel Watch, Google Health e beacon descrivono fisiologia e presenza nelle stanze.</p></div></li>
+        <li class="reveal"><span>2</span><div><strong>Qualità</strong><p>Timestamp, completezza, freschezza e disponibilità dei sensori vengono verificati prima dell’AI.</p></div></li>
+        <li class="reveal"><span>3</span><div><strong>Fusione AI</strong><p>Modelli spaziale, wearable e personale producono uno score accompagnato da confidenza e fattori esplicativi.</p></div></li>
+        <li class="reveal"><span>4</span><div><strong>Distribuzione</strong><p>I risultati viaggiano via MQTT cifrato; in assenza di rete restano nella coda persistente del Raspberry.</p></div></li>
+        <li class="reveal"><span>5</span><div><strong>Azione</strong><p>Dashboard, task e notifiche chiudono il ciclo tra medico, paziente e caregiver.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="section feature-band" id="funzioni">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Esperienza completa</p>
+        <h2>Ogni ruolo vede ciò che serve, nel momento giusto</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature reveal">
+          <i data-lucide="stethoscope" aria-hidden="true"></i>
+          <div><h3>Dashboard medico</h3><p>Quadro clinico, score AI nel tempo, grafici esplorabili, timeline unificata, routine ambientale e stato tecnico.</p></div>
+        </article>
+        <article class="feature reveal">
+          <i data-lucide="triangle-alert" aria-hidden="true"></i>
+          <div><h3>Workflow delle segnalazioni</h3><p>Presa in carico, risoluzione, note, storico e rimozione controllata trasformano gli alert in un processo operativo.</p></div>
+        </article>
+        <article class="feature reveal">
+          <i data-lucide="clipboard-check" aria-hidden="true"></i>
+          <div><h3>Attività e valutazioni</h3><p>Il medico assegna check-in e questionari; l’app registra avvio, completamento, durata e risultati, anche offline.</p></div>
+        </article>
+        <article class="feature reveal">
+          <i data-lucide="message-circle-heart" aria-hidden="true"></i>
+          <div><h3>Comunicazione personale</h3><p>Messaggi e suggerimenti personalizzati raggiungono il paziente o il caregiver corretto tramite associazioni autorizzate.</p></div>
+        </article>
+        <article class="feature reveal">
+          <i data-lucide="shield-check" aria-hidden="true"></i>
+          <div><h3>Sicurezza per ruolo</h3><p>Autenticazione, audit, credenziali amministrative e separazione dei destinatari proteggono dati e operazioni tecniche.</p></div>
+        </article>
+        <article class="feature reveal">
+          <i data-lucide="wifi-off" aria-hidden="true"></i>
+          <div><h3>Resilienza di rete</h3><p>Risultati mobile e messaggi Edge non inviati vengono salvati localmente e ritentati automaticamente.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section ai-band">
+      <div class="ai-copy reveal">
+        <p class="eyebrow">Intelligenza artificiale spiegabile</p>
+        <h2>Non soltanto uno score</h2>
+        <p>L’indice sintetizza più sorgenti, ma resta sempre accompagnato dal contesto necessario per interpretarlo: qualità dei dati, componenti del modello, confronto con la baseline e andamento precedente.</p>
+        <div class="ai-factors">
+          <span><i data-lucide="trending-up"></i> fattori che aumentano</span>
+          <span><i data-lucide="trending-down"></i> fattori che riducono</span>
+          <span><i data-lucide="circle-help"></i> dati mancanti</span>
+          <span><i data-lucide="gauge"></i> affidabilità</span>
+        </div>
+      </div>
+      <div class="score-visual reveal" aria-label="Esempio visuale di indice AI">
+        <div class="score-top"><span>Indice AI</span><strong>35.0</strong></div>
+        <div class="score-chart" aria-hidden="true">
+          <span style="--h: 28%"></span><span style="--h: 34%"></span><span style="--h: 31%"></span><span style="--h: 45%"></span><span style="--h: 38%"></span><span style="--h: 42%"></span><span style="--h: 36%"></span><span style="--h: 40%"></span><span style="--h: 35%"></span>
+        </div>
+        <div class="score-meta"><span>Routine stabile</span><span>Ultima finestra · 4 min</span></div>
+      </div>
+    </section>
+
+    <section class="section demo" id="demo">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Demo end-to-end</p>
+        <h2>Un percorso verificabile dall’acquisizione alla risposta</h2>
+      </div>
+      <div class="demo-layout">
+        <ol class="demo-steps">
+          <li class="active" data-demo-step="0"><button type="button"><span>01</span><div><strong>Raccolta</strong><small>Telefono e Watch inviano i segnali al Raspberry.</small></div></button></li>
+          <li data-demo-step="1"><button type="button"><span>02</span><div><strong>Elaborazione</strong><small>L’Edge chiude la finestra, controlla la qualità ed esegue l’AI.</small></div></button></li>
+          <li data-demo-step="2"><button type="button"><span>03</span><div><strong>Pubblicazione</strong><small>MQTT consegna dati e decisione al backend.</small></div></button></li>
+          <li data-demo-step="3"><button type="button"><span>04</span><div><strong>Intervento</strong><small>Il medico consulta, assegna un task e riceve il risultato.</small></div></button></li>
+        </ol>
+        <div class="demo-stage reveal" data-demo-stage>
+          <div class="stage-icon"><i data-lucide="bluetooth-searching"></i></div>
+          <p class="stage-label">FASE 01</p>
+          <h3>Segnali raccolti in casa</h3>
+          <p>Il foreground service Android individua i beacon e inoltra i campioni BLE; Google Health rende disponibili i parametri del wearable.</p>
+          <div class="stage-status"><span></span> Flusso monitorato</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section security-band">
+      <div class="security-title reveal">
+        <i data-lucide="lock-keyhole" aria-hidden="true"></i>
+        <div><p class="eyebrow">Privacy e affidabilità</p><h2>Progettato per sapere chi riceve cosa</h2></div>
+      </div>
+      <div class="security-points reveal">
+        <p><strong>Identità verificata.</strong> Ogni telefono viene associato dal backend a uno specifico paziente e a un identificatore dispositivo.</p>
+        <p><strong>Destinatari separati.</strong> Token FCM e autorizzazioni distinguono notifiche paziente e caregiver.</p>
+        <p><strong>Segreti locali.</strong> Token OAuth, chiavi Firebase, certificati e password non vengono versionati.</p>
+        <p><strong>Tracciabilità.</strong> Audit e stati operativi documentano le azioni rilevanti senza esporre token tecnici.</p>
+      </div>
+    </section>
+
+    <section class="section closing">
+      <img src="assets/app-logo.jpg" alt="Logo Triage IoT">
+      <p class="eyebrow">Progetto universitario · 2025/2026</p>
+      <h2>Un’infrastruttura IoT completa, dal sensore alla relazione di cura.</h2>
+      <p>Realizzato da Emilio Pascadopoli e Daniel Spedicato.</p>
+      <a class="button primary" href="https://github.com/UniSalento-IDALab-IoTCourse-2025-2026/wot-project-2025-2026-project-Emilio-Daniel" target="_blank" rel="noreferrer">Apri il progetto su GitHub <i data-lucide="external-link"></i></a>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Triage IoT</span>
+    <span>Università del Salento · Internet of Things</span>
+    <a href="#top">Torna su <i data-lucide="arrow-up"></i></a>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
